@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/CartorioDigital.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.19;\n\ncontract CartorioDigital {\n    // Estrutura para manter os detalhes do documento\n    struct Documento {\n        address signedBy;\n        uint256 timestamp;\n    }\n\n    mapping(string => Documento) private documentos;\n\n    event DocumentoAssinado(string cid, address assinante);\n    event DocumentoAlterado(string cid);\n        \n    function signDoc(string memory cid) public {\n        require(documentos[cid].signedBy == address(0), \"Doc already signed.\");\n        documentos[cid] = Documento(msg.sender, block.timestamp);\n        emit DocumentoAssinado(cid, msg.sender);\n    }\n\n    \n    function veridyDoc(string memory cid) public view returns (address, uint256) {\n        require(documentos[cid].signedBy != address(0), \"Doc not signed.\");\n        Documento memory doc = documentos[cid];\n        return (doc.signedBy, doc.timestamp);\n    }\n\n    function alterDoc(string memory cid) public {\n        require(documentos[cid].signedBy != address(0), \"Doc not signed.\");\n        documentos[cid].signedBy = address(0);\n        emit DocumentoAlterado(cid);\n    }\n}\n\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
