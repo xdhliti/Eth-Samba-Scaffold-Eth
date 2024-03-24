@@ -179,6 +179,104 @@ const deployedContracts = {
       ],
       inheritedFunctions: {},
     },
+    Counter: {
+      address: "0xC06Ea46b382D880eBDab7AfdD1976793626C658B",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "rOwner",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "cont",
+              type: "string",
+            },
+          ],
+          name: "addContract",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "contracts",
+          outputs: [
+            {
+              internalType: "string",
+              name: "content",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "ownerCon",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "sentOwner",
+              type: "address",
+            },
+          ],
+          name: "getAllMyContracts",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "content",
+                  type: "string",
+                },
+                {
+                  internalType: "address",
+                  name: "ownerCon",
+                  type: "address",
+                },
+              ],
+              internalType: "struct Counter.ContractDTO[]",
+              name: "",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "tokenIds",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
   },
   11155111: {
     CartorioDigital: {
