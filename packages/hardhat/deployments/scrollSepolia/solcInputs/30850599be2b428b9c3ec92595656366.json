@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Counter.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract Counter {\n    uint[] public tokenIds;\n    uint private counter = 0;\n    ContractDTO contr;\n    ContractDTO[] public contracts;\n\n    //mapping(address => string) public reqOwner;\n\n    struct ContractDTO {\n        string content;\n        address ownerCon;\n    }\n\n    \n    function addContract(address rOwner, string memory cont) public {\n        ContractDTO memory newContract = ContractDTO({\n            content: cont,\n            ownerCon: rOwner\n        });\n        contracts.push(newContract);\n    }\n\n    function getAllMyContracts(address sentOwner) public view returns (ContractDTO[] memory){\n        uint totalItemCount = contracts.length;      \n        uint itemCount = 0;\n\n        for (uint i = 0; i < totalItemCount; i++) {\n            if (contracts[i].ownerCon == sentOwner) {\n                itemCount++;\n            }\n        }\n\n        ContractDTO[] memory items = new ContractDTO[](itemCount);\n        uint currentIndex = 0;\n\n        for (uint i = 0; i < totalItemCount; i++) {\n            if (contracts[i].ownerCon == sentOwner) {\n                items[currentIndex] = contracts[i];\n                currentIndex++;\n            }\n        }\n\n        return items;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

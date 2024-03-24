@@ -11,7 +11,7 @@ const deployCartorioDigital: DeployFunction = async function (hre: HardhatRuntim
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
-  await deploy("CartorioDigital", {
+  await deploy("Counter", {
     from: deployer,
     args: [],
     log: true,
@@ -19,11 +19,11 @@ const deployCartorioDigital: DeployFunction = async function (hre: HardhatRuntim
   });
 
   // Optionally, interact with the contract after deploying
-  const cartorioDigital = await hre.ethers.getContract<Contract>("CartorioDigital", deployer);
+  const cartorioDigital = await hre.ethers.getContract<Contract>("Counter", deployer);
   const address = await cartorioDigital.getAddress();
-  console.log("CartorioDigital deployed to:", address);
+  console.log("Counter deployed to:", address);
 };
 
 export default deployCartorioDigital;
 
-deployCartorioDigital.tags = ["CartorioDigital"];
+deployCartorioDigital.tags = ["Counter"];
