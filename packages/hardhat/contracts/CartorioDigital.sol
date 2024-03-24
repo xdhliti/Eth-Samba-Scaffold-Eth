@@ -4,13 +4,11 @@ pragma solidity ^0.8.0;
 contract CartorioDigital {
     string public CidForms;
     string public CidDoc;
-    bool public isSigned = false;
+    bool public isSigned;
 
     constructor() {
-        isSigned = false; // inicialmente não assinado
+        isSigned = false;
     }
-
-    // Função para assinar o contratoForn
 
     function setCidForms(string memory _CidForms) public {
         CidForms = _CidForms;
@@ -25,5 +23,4 @@ contract CartorioDigital {
         require(!isSigned, "Contrato ja assinado.");
         isSigned = true;
     }
-
 }

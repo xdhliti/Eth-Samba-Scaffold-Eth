@@ -20,7 +20,8 @@ const deployCartorioDigital: DeployFunction = async function (hre: HardhatRuntim
 
   // Optionally, interact with the contract after deploying
   const cartorioDigital = await hre.ethers.getContract<Contract>("CartorioDigital", deployer);
-  console.log("CartorioDigital deployed to:", cartorioDigital.address);
+  const address = await cartorioDigital.getAddress();
+  console.log("CartorioDigital deployed to:", address);
 };
 
 export default deployCartorioDigital;

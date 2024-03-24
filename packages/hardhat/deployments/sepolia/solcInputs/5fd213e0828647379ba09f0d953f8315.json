@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/CartorioDigital.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract CartorioDigital {\n    string public CidForms;\n    string public CidDoc;\n    bool public isSigned;\n\n    constructor() {\n        isSigned = false;\n    }\n\n    function setCidForms(string memory _CidForms) public {\n        CidForms = _CidForms;\n    }\n\n    function setCidDoc(string memory _CidDoc) public {\n        CidDoc = _CidDoc;\n    }\n\n    function signContract() public {\n        require(bytes(CidDoc).length > 0, \"CidDoc nao pode ser vazio.\");\n        require(!isSigned, \"Contrato ja assinado.\");\n        isSigned = true;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

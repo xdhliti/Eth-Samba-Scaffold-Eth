@@ -97,7 +97,7 @@ const deployedContracts = {
   },
   534351: {
     CartorioDigital: {
-      address: "0x5aaC72efd1A6828Da8e224f77d6d42F52A6eB601",
+      address: "0x220Cbc6D03faD04019023468659c8F06aE1cE00c",
       abi: [
         {
           inputs: [],
@@ -182,7 +182,7 @@ const deployedContracts = {
   },
   11155111: {
     CartorioDigital: {
-      address: "0x19A5814E7629B466D8084DDe98979c38d9c1329c",
+      address: "0x9EA7dFD8119402a147E67CB4AEbF200822B903C6",
       abi: [
         {
           inputs: [],
